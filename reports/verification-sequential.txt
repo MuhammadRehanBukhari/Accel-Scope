@@ -1,0 +1,5 @@
+PASS: 1006 Python-reference cases
+PASS: input capture and ignored start while busy
+PASS: done pulse and output retention
+PASS: reset during processing and recovery
+Measured compute cycles per case: 16

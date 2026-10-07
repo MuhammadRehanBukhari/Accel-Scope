@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "workload": {
+    "matrix_shape": [
+      4,
+      4
+    ],
+    "input_bits": 8,
+    "accumulator_bits": 18,
+    "signed_inputs": true
+  },
+  "measurement_basis": {
+    "cycles": "Processing edges after input acceptance through done.",
+    "resources": "Yosys default generic synthesis; no device library.",
+    "limitations": "No physical area, maximum clock speed, or power measurement."
+  },
+  "tools": {
+    "python": "3.12.3",
+    "verilator": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+    "yosys": "Yosys 0.33 (git sha1 2584903a060)"
+  },
+  "reference_vectors": {
+    "path": "build/seq/vectors.txt",
+    "case_count": 1006,
+    "sha256": "621bd0f5bcdd1df85de08ea18c2ce8db973548b38eb78a6f71244bc72b8c9241"
+  },
+  "architectures": {
+    "sequential": {
+      "top_module": "accelscope_seq",
+      "verification": "passed",
+      "reference_cases": 1006,
+      "compute_cycles": 16,
+      "high_level_multipliers": 1,
+      "generic_cells": 1123,
+      "mapped_register_bits": 256,
+      "mapped_cell_types": {
+        "$_ANDNOT_": 288,
+        "$_AND_": 13,
+        "$_MUX_": 146,
+        "$_NAND_": 45,
+        "$_NOR_": 16,
+        "$_NOT_": 32,
+        "$_ORNOT_": 21,
+        "$_OR_": 86,
+        "$_SDFFE_PP0P_": 254,
+        "$_SDFF_PP0_": 2,
+        "$_XNOR_": 45,
+        "$_XOR_": 175
+      },
+      "rtl_sha256": "70e0c0060b09c9b6c925b6e659bd0814d91e637291c9e54effde7f10820089f2",
+      "testbench_sha256": "003382bad474855cb57b20c24ac798640e8edaa3bd1178d46a41074e397c424e",
+      "executable_sha256": "da65d8e6ba20ab3371bba36784c1f773c8cdbbec84afd10c2214285975dff744",
+      "synthesis_flow": "read_verilog rtl/accelscope_seq.v; hierarchy -check -top accelscope_seq; proc; opt; check -assert; write_json build/resources/sequential-operators.json; synth -top accelscope_seq; check -assert; write_json build/resources/sequential-mapped.json"
+    },
+    "parallel": {
+      "top_module": "accelscope_parallel",
+      "verification": "passed",
+      "reference_cases": 1006,
+      "compute_cycles": 4,
+      "high_level_multipliers": 4,
+      "generic_cells": 3133,
+      "mapped_register_bits": 308,
+      "mapped_cell_types": {
+        "$_ANDNOT_": 905,
+        "$_AND_": 107,
+        "$_MUX_": 121,
+        "$_NAND_": 206,
+        "$_NOR_": 37,
+        "$_NOT_": 135,
+        "$_ORNOT_": 86,
+        "$_OR_": 331,
+        "$_SDFFE_PP0P_": 306,
+        "$_SDFF_PP0_": 2,
+        "$_XNOR_": 122,
+        "$_XOR_": 775
+      },
+      "rtl_sha256": "3938ad57b49b8ccb49749edb6e251129278e4fc7f74451839fffce0d6d70808e",
+      "testbench_sha256": "3dca4cf8a8c6824b47c387320c867fa82623066bc15def42ec88464b0a41dc23",
+      "executable_sha256": "c6689af63ed73035dde0a1898737086f4a221cf06b9dd8d7d1e430e7efd590a5",
+      "synthesis_flow": "read_verilog rtl/accelscope_parallel.v; hierarchy -check -top accelscope_parallel; proc; opt; check -assert; write_json build/resources/parallel-operators.json; synth -top accelscope_parallel; check -assert; write_json build/resources/parallel-mapped.json"
+    }
+  },
+  "comparison": {
+    "sequential_to_parallel_compute_cycle_ratio": 4.0,
+    "parallel_to_sequential_generic_cell_ratio": 2.789848619768477
+  }
+}
